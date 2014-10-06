@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>周报生成器</title>
+<style type="text/css">
+.highlight{ background-color: yellow;}
+</style>
+</head>
+<body>
+<dl id="dlBox" style="width: 1043px; margin: 20px auto; overflow: hidden;">
+	<dd style="float: left; width: 450px; height: 20px; text-align: center; margin: 0 10px; overflow: hidden;">项目</dd>
+	<dd style="float: left; width: 155px; height: 20px; text-align: center; margin: 0 10px; overflow: hidden;">Owner</dd>
+	<dd style="float: left; width: 100px; height: 20px; text-align: center; margin: 0 10px; overflow: hidden;">进度</dd>
+	<dd style="float: left; width: 200px; height: 20px; text-align: center; margin: 0 10px; overflow: hidden;">备注</dd>
+</dl>
+<ul id="dlInp" style="display: block; width: 1043px; margin: 0 auto; list-style: none;">
+	<li style="float: left;"></li>
+	<li style="float: left;"><textarea id="projectVal" style="width: 200px; height: 20px; margin-right:5px; float:left; overflow: hidden;"></textarea></li>
+	<li style="float: left;"><input type="text" id="ownerVal" style="width: 155px; height: 20px; margin-right:5px; float:left; overflow: hidden;" /></li>
+	<li style="float: left;">
+		<select id="processVal" style="width: 100px; height: 25px; margin-right:5px; float:left; overflow: hidden;">
+			<option>0%</option>
+			<option>10%</option>
+			<option>20%</option>
+			<option>30%</option>
+			<option>40%</option>
+			<option>50%</option>
+			<option>60%</option>
+			<option>70%</option>
+			<option>80%</option>
+			<option>90%</option>
+			<option>100%</option>
+			<option>已提测</option>
+			<option>已上线</option>		
+		</select>
+	</li>
+	<li style="float: left;"><textarea id="bakVal" style="width: 500px; height: 20px; margin-right:5px; float:left; overflow: hidden;"></textarea></li>
+</ul>
+<input type="button" id="addbtn" style="width:50px;height:25px;line-height:25px;text-align:center;border-style:none;box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset; background:blue; background: -webkit-linear-gradient(top,#42a4e0,#2e88c0); background: -moz-linear-gradient(top,#42a4e0,#2e88c0);background: linear-gradient(top,#42a4e0,#2e88c0);color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;" onclick="autocreate()" value="添加"  />	
+<div id="innerprint" style="clear:both;overflow:hidden;">
+	<table id="d1" cellspacing="0" cellpadding="0" style="clear:both;width:1000px;border:#d5d5d5 1px solid; margin: 20px auto 0; padding:0; overflow: hidden;">
+		<thead>
+			<tr>
+				<th id="num" style="width: 10%; color:#fff; background-color:#308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">序号</td>
+				<th id="project" style="width: 30%; color:#fff; background-color:#308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">项目</td>
+				<th id="owner" style="width: 10%; color:#fff; background-color:#308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">Owner</td>
+				<th id="process" style="width: 10%; color:#fff; background-color:#308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">进度</td>
+				<th id="bak" style="width: 50%; color:#fff; background-color:#308ce3; padding:10px; text-align: center; border-right: none; margin:0; overflow: hidden;">备注</td>
+			</tr>
+		</thead>
+		<tbody>
+	    </tbody>
+	</table>
+</div>
+<input type="button" id="okBtn" value="提交" onclick="dlBoxBtn()" style="display:block; margin:10px auto; text-align:center;border-style:none;width:50px;height:25px;line-height:25px;background-color:red;color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;" />
+<textarea id="outerprint" style="margin:10px auto; display:block; width:1000px; min-height:500px; overflow:hidden;"></textarea>
+<div style="width:1000px; margin:10px auto; text-align:center;">
+	<input type="button" onClick="returnLoad()" value="返回上一步" style="display:inline-block;margin:0 10px;text-align:center;border-style:none;background:blue; box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset; background: -webkit-linear-gradient(top,#42a4e0,#2e88c0); background: -moz-linear-gradient(top,#42a4e0,#2e88c0);background: linear-gradient(top,#42a4e0,#2e88c0);color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;height:30px;color:#fff;" />
+	<input type="button" onClick="copyUrl2()" value="点此全选复制代码" style="display:inline-block;margin:0 10px;text-align:center;background-color:red;border-style:none;border-radius:3px;height:30px;color:#fff;" />
+</div>
+<script type="text/javascript" src="js/weeklyRB.js"></script>
+</body>
+</html>

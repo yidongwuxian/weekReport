@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="save" content="history"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>周报生成器</title>
+<style type="text/css">
+.highlight{ background-color: yellow;}
+::selection{ background: #90dfa2; color: #fff;}
+input{behavior:url(#default#savehistory)};  
+</style>
+<link id="myStyle" type="text/css" rel="stylesheet" href=""/>
+</head>
+<body onload="init()">	
+<div class="box1" style="position:relative;clear:both;overflow:hidden;">
+	<input type="button" id="addbtn" style="position:absolute;right:100px;top:63px;width:50px;height:25px;line-height:25px;text-align:center;border-style:none;box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset; background:blue; background: -webkit-linear-gradient(top,#42a4e0,#2e88c0); background: -moz-linear-gradient(top,#42a4e0,#2e88c0);background: linear-gradient(top,#42a4e0,#2e88c0);color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;z-index:999;" onclick="autocreate(this)" value="添加"  />
+	<div id="innerprint" style="position:relative;clear:both;overflow:hidden;">
+		<h2 id="ih1" style="width:1000px;margin:10px auto;">本周：</h2>
+		<table id="d1" cellspacing="0" cellpadding="0" style="clear:both;width:1000px; margin: 20px auto 50px; padding:0; border-left:1px solid #d5d5d5;  overflow: hidden;">
+			<thead>
+				<tr>
+					<th id="num" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">序号</td>
+					<th id="project" style="width: 30%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">项目</td>
+					<th id="owner" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">Owner</td>
+					<th id="process" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">进度</td>
+					<th id="bak" style="width: 50%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right: none; margin:0; overflow: hidden;">备注</td>
+				</tr>
+			</thead>
+			<tbody>
+		    </tbody>
+		</table>	
+	</div>
+</div>
+<div class="box2" style="position:relative;clear:both;overflow:hidden;">
+	<input type="button" id="addbtn1" style="position:absolute;right:100px;top:63px;width:50px;height:25px;line-height:25px;text-align:center;border-style:none;box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset; background:blue; background: -webkit-linear-gradient(top,#42a4e0,#2e88c0); background: -moz-linear-gradient(top,#42a4e0,#2e88c0);background: linear-gradient(top,#42a4e0,#2e88c0);color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;z-index:999;" onclick="autocreate1(this)" value="添加"  />
+	<div id="innerprint1" style="position:relative;clear:both;overflow:hidden;">
+		<h2 id="ih2" style="width:1000px;margin:10px auto;">下周：</h2>
+		<table id="d2" cellspacing="0" cellpadding="0" style="clear:both;width:1000px; margin: 20px auto 50px; padding:0; border-left:1px solid #d5d5d5;  overflow: hidden;">
+			<thead>	
+				<tr>
+					<th id="num" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">序号</td>
+					<th id="project" style="width: 30%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">项目</td>
+					<th id="owner" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">Owner</td>
+					<th id="process" style="width: 10%; color:#fff; background-color: #308ce3; padding:10px; text-align: center; border-right:1px solid #d5d5d5; margin:0; overflow: hidden;">进度</td>
+					<th id="bak" style="width: 50%; color:#fff;background-color: #308ce3; padding:10px; text-align: center; border-right: none; margin:0; overflow: hidden;">备注</td>
+				</tr>
+			</thead>
+			<tbody>
+		    </tbody>
+		</table>	
+	</div>
+</div>
+<input type="button" id="okBtn" value="提交" onclick="dlBoxBtn()" style="display:block; margin:10px auto; text-align:center;border-style:none;width:50px;height:25px;line-height:25px;color:#fff;background-color:red;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;" />
+<textarea id="outerprint" style="margin:10px auto; display:block; width:1000px; min-height:500px; overflow:hidden;"></textarea>
+<div style="width:1000px; margin:10px auto; text-align:center;">
+	<input type="button" onClick="returnLoad()" value="返回上一步" style="display:inline-block;margin:0 10px;text-align:center;border-style:none;background:blue; box-shadow: 0 1px 2px #8fcaee inset,0 -1px 0 #497897 inset,0 -2px 3px #8fcaee inset; background: -webkit-linear-gradient(top,#42a4e0,#2e88c0); background: -moz-linear-gradient(top,#42a4e0,#2e88c0);background: linear-gradient(top,#42a4e0,#2e88c0);color:#fff;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;height:30px;color:#fff;" />
+	<input type="button" id="copyUrl" onClick="copyUrl2()" value="点此全选复制代码" style="display:inline-block;margin:0 10px;text-align:center;border-style:none;border-radius:3px;height:30px;color:#fff;background-color:red;" />
+</div>
+<script type="text/javascript" src="js/weeklyRB.js"></script>
+</body>
+</html>
